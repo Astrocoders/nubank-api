@@ -4,7 +4,8 @@
   "description": "NuBank API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-publish": "babel src/ --out-dir ./dist"
   },
   "repository": {
     "type": "git",
