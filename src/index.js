@@ -60,6 +60,23 @@ export default function(){
     },
 
     /**
+     * Fetches credit card account related data
+     * @return {object} account
+    */
+    @withSignedInUser
+    getCustomerAccount(){
+      return (
+        fetch(signInData._links.account.href, {
+          headers: {
+            ...REQUEST_HEADERS_SAUCE,
+            Authorization: `Bearer ${signInData.access_token}`,
+          },
+        })
+        .then(res => res.json())
+      )
+    },
+
+    /**
      * Fetches all transaction history since the very beginning
      * @returns {object} history
     */

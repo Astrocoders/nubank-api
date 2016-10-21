@@ -51,6 +51,15 @@ exports.default = function () {
         return res.json();
       });
     },
+    getCustomerAccount: function getCustomerAccount() {
+      return (0, _nodeFetch2.default)(signInData._links.account.href, {
+        headers: _extends({}, REQUEST_HEADERS_SAUCE, {
+          Authorization: 'Bearer ' + signInData.access_token
+        })
+      }).then(function (res) {
+        return res.json();
+      });
+    },
     getWholeFeed: function getWholeFeed() {
       return (0, _nodeFetch2.default)(signInData._links.events.href, {
         headers: _extends({}, REQUEST_HEADERS_SAUCE, {
@@ -65,7 +74,7 @@ exports.default = function () {
     get signInData() {
       return signInData;
     }
-  }, (_applyDecoratedDescriptor(_obj, 'getCustomer', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomer'), _obj), _applyDecoratedDescriptor(_obj, 'getWholeFeed', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getWholeFeed'), _obj)), _obj;
+  }, (_applyDecoratedDescriptor(_obj, 'getCustomer', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomer'), _obj), _applyDecoratedDescriptor(_obj, 'getCustomerAccount', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomerAccount'), _obj), _applyDecoratedDescriptor(_obj, 'getWholeFeed', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getWholeFeed'), _obj)), _obj;
 };
 
 var _nodeFetch = require('node-fetch');
