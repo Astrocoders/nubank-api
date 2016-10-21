@@ -1,0 +1,22 @@
+{
+  "name": "nubank",
+  "version": "1.0.0",
+  "description": "NuBank API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Astrocoders/nubank-api.git"
+  },
+  "keywords": [
+    "nubank"
+  ],
+  "author": "Gabriel Rubens (twitter.com/_gabrielrubens)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Astrocoders/nubank-api/issues"
+  },
+  "homepage": "https://github.com/Astrocoders/nubank-api#readme"
+}
