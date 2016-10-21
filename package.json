@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/Astrocoders/nubank-api/issues"
   },
-  "homepage": "https://github.com/Astrocoders/nubank-api#readme"
+  "homepage": "https://github.com/Astrocoders/nubank-api#readme",
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0"
+  }
 }
