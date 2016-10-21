@@ -7,7 +7,7 @@ const REQUEST_HEADERS_SAUCE = {
   'X-Correlation-Id': 'WEB-APP.jO4x1',
   'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',
   'Origin': 'https://conta.nubank.com.br',
-  'Referer': 'https://conta.nubank.com.br/'
+  'Referer': 'https://conta.nubank.com.br/',
 }
 
 export default function(){
@@ -24,8 +24,8 @@ export default function(){
   }
 
   return {
-    getLoginToken({ password, login }){
-      return fetch(apiURIs.token, {
+    getLoginToken: ({ password, login }) => (
+      fetch(apiURIs.token, {
         body: JSON.stringify({
           password,
           login,
@@ -40,56 +40,52 @@ export default function(){
       })
       .then(res => res.json())
       .then(data => signInData = data)
-    },
+    ),
 
     /**
      * Fetches user related data
      * @return {object} customer
     */
     @withSignedInUser
-    getCustomer(){
-      return (
-        fetch(apiURIs.customers, {
-          headers: {
-            ...REQUEST_HEADERS_SAUCE,
-            Authorization: `Bearer ${signInData.access_token}`,
-          },
-        })
-        .then(res => res.json())
-      )
-    },
+    getCustomer: () => (
+      fetch(apiURIs.customers, {
+        headers: {
+          ...REQUEST_HEADERS_SAUCE,
+          Authorization: `Bearer ${signInData.access_token}`,
+        },
+      })
+      .then(res => res.json())
+    ),
 
     /**
      * Fetches credit card account related data
      * @return {object} account
     */
     @withSignedInUser
-    getCustomerAccount(){
-      return (
-        fetch(signInData._links.account.href, {
-          headers: {
-            ...REQUEST_HEADERS_SAUCE,
-            Authorization: `Bearer ${signInData.access_token}`,
-          },
-        })
-        .then(res => res.json())
-      )
-    },
+    getCustomerAccount: () => (
+      fetch(signInData._links.account.href, {
+        headers: {
+          ...REQUEST_HEADERS_SAUCE,
+          Authorization: `Bearer ${signInData.access_token}`,
+        },
+      })
+      .then(res => res.json())
+    ),
 
     /**
      * Fetches all transaction history since the very beginning
      * @returns {object} history
     */
     @withSignedInUser
-    getWholeFeed(){
-      return fetch(signInData._links.events.href, {
+    getWholeFeed: () => (
+      fetch(signInData._links.events.href, {
         headers: {
           ...REQUEST_HEADERS_SAUCE,
           Authorization: `Bearer ${signInData.access_token}`,
-        }
+        },
       }).then(res => res.json())
-    },
+    ),
 
-    get signInData(){ return signInData }
+    get signInData(){ return signInData },
   }
 }

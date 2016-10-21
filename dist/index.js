@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.default = function () {
-  var _desc, _value, _obj;
+  var _desc, _value, _obj, _init, _init2, _init3;
 
   var signInData = {};
 
@@ -25,7 +25,6 @@ exports.default = function () {
     getLoginToken: function getLoginToken(_ref) {
       var password = _ref.password;
       var login = _ref.login;
-
       return (0, _nodeFetch2.default)(_api_uris2.default.token, {
         body: JSON.stringify({
           password: password,
@@ -42,6 +41,7 @@ exports.default = function () {
         return signInData = data;
       });
     },
+
     getCustomer: function getCustomer() {
       return (0, _nodeFetch2.default)(_api_uris2.default.customers, {
         headers: _extends({}, REQUEST_HEADERS_SAUCE, {
@@ -51,6 +51,7 @@ exports.default = function () {
         return res.json();
       });
     },
+
     getCustomerAccount: function getCustomerAccount() {
       return (0, _nodeFetch2.default)(signInData._links.account.href, {
         headers: _extends({}, REQUEST_HEADERS_SAUCE, {
@@ -60,6 +61,7 @@ exports.default = function () {
         return res.json();
       });
     },
+
     getWholeFeed: function getWholeFeed() {
       return (0, _nodeFetch2.default)(signInData._links.events.href, {
         headers: _extends({}, REQUEST_HEADERS_SAUCE, {
@@ -70,11 +72,31 @@ exports.default = function () {
       });
     },
 
-
     get signInData() {
       return signInData;
     }
-  }, (_applyDecoratedDescriptor(_obj, 'getCustomer', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomer'), _obj), _applyDecoratedDescriptor(_obj, 'getCustomerAccount', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomerAccount'), _obj), _applyDecoratedDescriptor(_obj, 'getWholeFeed', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getWholeFeed'), _obj)), _obj;
+  }, (_applyDecoratedDescriptor(_obj, 'getCustomer', [withSignedInUser], (_init = Object.getOwnPropertyDescriptor(_obj, 'getCustomer'), _init = _init ? _init.value : undefined, {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    initializer: function initializer() {
+      return _init;
+    }
+  }), _obj), _applyDecoratedDescriptor(_obj, 'getCustomerAccount', [withSignedInUser], (_init2 = Object.getOwnPropertyDescriptor(_obj, 'getCustomerAccount'), _init2 = _init2 ? _init2.value : undefined, {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    initializer: function initializer() {
+      return _init2;
+    }
+  }), _obj), _applyDecoratedDescriptor(_obj, 'getWholeFeed', [withSignedInUser], (_init3 = Object.getOwnPropertyDescriptor(_obj, 'getWholeFeed'), _init3 = _init3 ? _init3.value : undefined, {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    initializer: function initializer() {
+      return _init3;
+    }
+  }), _obj)), _obj;
 };
 
 var _nodeFetch = require('node-fetch');
