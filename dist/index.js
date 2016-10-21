@@ -7,9 +7,21 @@ Object.defineProperty(exports, "__esModule", {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.default = function () {
+  var _desc, _value, _obj;
+
   var signInData = {};
 
-  return {
+  function withSignedInUser(fn) {
+    return function () {
+      if ((0, _lodash.isEmpty)(signInData)) {
+        throw new Error('[NuBank] You must sign in first');
+      }
+
+      return fn.apply(undefined, arguments);
+    };
+  }
+
+  return _obj = {
     getLoginToken: function getLoginToken(_ref) {
       var password = _ref.password;
       var login = _ref.login;
@@ -30,21 +42,20 @@ exports.default = function () {
         return signInData = data;
       });
     },
-
-
-    /**
-     * Fetchs all transaction history since the very beginning
-     * @returns {object} history
-    */
-    getWholeFeed: function getWholeFeed() {
-      if ((0, _lodash.isEmpty)(signInData)) {
-        throw new Error('[NuBank] You must sign in first');
-      }
-
-      return (0, _nodeFetch2.default)(signInData._links.events.href, {
-        headers: _extends({
+    getCustomer: function getCustomer() {
+      return (0, _nodeFetch2.default)(_api_uris2.default.customers, {
+        headers: _extends({}, REQUEST_HEADERS_SAUCE, {
           Authorization: 'Bearer ' + signInData.access_token
-        }, REQUEST_HEADERS_SAUCE)
+        })
+      }).then(function (res) {
+        return res.json();
+      });
+    },
+    getWholeFeed: function getWholeFeed() {
+      return (0, _nodeFetch2.default)(signInData._links.events.href, {
+        headers: _extends({}, REQUEST_HEADERS_SAUCE, {
+          Authorization: 'Bearer ' + signInData.access_token
+        })
       }).then(function (res) {
         return res.json();
       });
@@ -54,7 +65,7 @@ exports.default = function () {
     get signInData() {
       return signInData;
     }
-  };
+  }, (_applyDecoratedDescriptor(_obj, 'getCustomer', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getCustomer'), _obj), _applyDecoratedDescriptor(_obj, 'getWholeFeed', [withSignedInUser], Object.getOwnPropertyDescriptor(_obj, 'getWholeFeed'), _obj)), _obj;
 };
 
 var _nodeFetch = require('node-fetch');
@@ -68,6 +79,35 @@ var _api_uris = require('./api_uris');
 var _api_uris2 = _interopRequireDefault(_api_uris);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
 
 var REQUEST_HEADERS_SAUCE = {
   'Content-Type': 'application/json',

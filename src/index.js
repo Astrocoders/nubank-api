@@ -13,6 +13,16 @@ const REQUEST_HEADERS_SAUCE = {
 export default function(){
   let signInData = {}
 
+  function withSignedInUser(fn){
+    return (...args) => {
+      if(isEmpty(signInData)){
+        throw new Error('[NuBank] You must sign in first')
+      }
+
+      return fn(...args)
+    }
+  }
+
   return {
     getLoginToken({ password, login }){
       return fetch(apiURIs.token, {
@@ -33,18 +43,32 @@ export default function(){
     },
 
     /**
-     * Fetchs all transaction history since the very beginning
+     * Fetches user related data
+     * @return {object} customer
+    */
+    @withSignedInUser
+    getCustomer(){
+      return (
+        fetch(apiURIs.customers, {
+          headers: {
+            ...REQUEST_HEADERS_SAUCE,
+            Authorization: `Bearer ${signInData.access_token}`,
+          },
+        })
+        .then(res => res.json())
+      )
+    },
+
+    /**
+     * Fetches all transaction history since the very beginning
      * @returns {object} history
     */
+    @withSignedInUser
     getWholeFeed(){
-      if(isEmpty(signInData)){
-        throw new Error('[NuBank] You must sign in first')
-      }
-
       return fetch(signInData._links.events.href, {
         headers: {
-          Authorization: `Bearer ${signInData.access_token}`,
           ...REQUEST_HEADERS_SAUCE,
+          Authorization: `Bearer ${signInData.access_token}`,
         }
       }).then(res => res.json())
     },
