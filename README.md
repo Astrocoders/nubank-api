@@ -1,5 +1,6 @@
 NuBank API
 ==========
+[![travis](https://travis-ci.org/Astrocoders/nubank-api.svg?branch=develop)](https://travis-ci.org/Astrocoders/nubank-apio)
 
 Not related to NuBank Inc.
 
