@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
     "pre-publish": "babel src/ --out-dir ./dist"
   },
   "repository": {

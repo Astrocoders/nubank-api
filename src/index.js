@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash'
 import apiURIs from './api_uris'
 
 /* eslint-disable quote-props */
-const REQUEST_HEADERS_SAUCE = {
+export const REQUEST_HEADERS_SAUCE = {
   'Content-Type': 'application/json',
   'X-Correlation-Id': 'WEB-APP.jO4x1',
   'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',
