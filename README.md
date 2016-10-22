@@ -47,7 +47,7 @@ NuBank
 ```
 
 ## API
-### Nubank.getCustomer
+### NuBank.getCustomer
 Gets your customer related information
 _You must have called getLoginToken first._
 ```
