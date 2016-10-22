@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "pre-publish": "babel src/ --out-dir ./dist"
   },
   "repository": {
@@ -30,5 +31,9 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.16.0"
+  },
+  "jest": {
+    "browser": false,
+    "collectCoverageFrom": ["src/**/*.js"]
   }
 }
