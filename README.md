@@ -2,6 +2,7 @@ NuBank API
 ==========
 [![travis](https://travis-ci.org/Astrocoders/nubank-api.svg?branch=develop)](https://travis-ci.org/Astrocoders/nubank-api)
 [![codecov](https://codecov.io/gh/Astrocoders/nubank-api/branch/develop/graph/badge.svg)](https://codecov.io/gh/Astrocoders/nubank-api)
+[![Code Climate](https://codeclimate.com/repos/580b95b28039330d4c0040e2/badges/a005df44d49d97fbe561/gpa.svg)](https://codeclimate.com/repos/580b95b28039330d4c0040e2/feed)
 
 Not related to NuBank Inc.
 
