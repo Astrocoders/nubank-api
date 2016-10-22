@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 import { isEmpty } from 'lodash'
 import apiURIs from './api_uris'
 
+/* eslint-disable quote-props */
 const REQUEST_HEADERS_SAUCE = {
   'Content-Type': 'application/json',
   'X-Correlation-Id': 'WEB-APP.jO4x1',
@@ -9,6 +10,7 @@ const REQUEST_HEADERS_SAUCE = {
   'Origin': 'https://conta.nubank.com.br',
   'Referer': 'https://conta.nubank.com.br/',
 }
+/* eslint-enable quote-props */
 
 export default function(){
   let signInData = {}
@@ -39,7 +41,9 @@ export default function(){
         },
       })
       .then(res => res.json())
+      /* eslint-disable no-return-assign */
       .then(data => signInData = data)
+      /* eslint-enable no-return-assign */
     ),
 
     /**
