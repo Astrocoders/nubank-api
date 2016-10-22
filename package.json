@@ -4,7 +4,7 @@
   "description": "NuBank API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "pre-publish": "babel src/ --out-dir ./dist"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Astrocoders/nubank-api#readme",
   "dependencies": {
+    "jest-cli": "^16.0.2",
     "lodash": "^4.16.4",
     "node-fetch": "^1.6.3"
   },
