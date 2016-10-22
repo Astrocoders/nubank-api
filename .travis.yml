@@ -1,0 +1,14 @@
+language: nodejs
+
+node_js: 6
+
+cache:
+  directories:
+    - node_modules
+install:
+  - npm i -g yarn
+  - yarn install
+
+script:
+  - npm test
+  - npm run test:coverage
