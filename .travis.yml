@@ -10,6 +10,7 @@ cache:
     - node_modules
 
 install:
+  - npm i -g codeclimate-test-reporter
   - npm i -g yarn
   - yarn install
 
@@ -18,4 +19,4 @@ script:
 
 after_success:
   - npm run test:coverage
-  - bash <(curl -s https://codecov.io/bash)
+  - codeclimate-test-reporter < lcov.info
