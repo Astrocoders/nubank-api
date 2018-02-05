@@ -13,6 +13,11 @@ yarn add nubank
 npm i --save nubank
 ```
 
+## Is it ok to use this? NuBank won't block me?
+
+As of this tweet, seems that there is no problem in using this!
+https://twitter.com/nubankbrasil/status/766665014161932288
+
 # Usage
 First of all you need to sign in to your account using your credentials:
 
