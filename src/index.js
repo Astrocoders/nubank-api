@@ -33,6 +33,7 @@ export default function(){
           login,
           grant_type: 'password',
           client_id: 'other.conta',
+          client_secret: 'yQPeLzoHuJzlMMSAjC-LgNUJdUecx8XO',
         }),
         method: 'POST',
         headers: {
