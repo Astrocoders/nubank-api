@@ -67,7 +67,7 @@ export default function(){
     */
     @withSignedInUser
     getCustomerAccount: () => (
-      fetch(signInData._links.account.href, {
+      fetch(signInData._links.account_emergency.href, {
         headers: {
           ...REQUEST_HEADERS_SAUCE,
           Authorization: `Bearer ${signInData.access_token}`,
